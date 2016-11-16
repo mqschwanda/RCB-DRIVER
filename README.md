@@ -11,7 +11,6 @@
 * SMS Reminder
 * File Sharing App
 * URL Shortener
-
 * Online community Auction/bid to sell user items
 * Reviewer - shows reviews of particular item, add comment/post to a particular item.
 * Wheelchair/handicap accessible national/state parks, "hike" trails.
