@@ -9,6 +9,7 @@
     "express-handlebars": "^3.0.0",
     "mapbox": "^1.0.0-beta5",
     "method-override": "^2.3.6",
+    "mysql": "^2.12.0",
     "path": "^0.12.7",
     "sequelize": "^3.25.0"
   },
