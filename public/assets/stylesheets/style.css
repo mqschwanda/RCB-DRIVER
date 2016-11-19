@@ -1,0 +1,92 @@
+/****************
+** GENERAL CSS **
+****************/
+html, body {
+  min-width: 600px;
+}
+
+/******************
+** Sticky Footer **
+******************/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+
+/****************
+** MAIN NAVBAR **
+****************/
+.nav-wrapper {
+  padding: 0 0.75rem;
+}
+/* Allows double float left in materialize navbar */
+nav .brand-logo {
+  position: relative;
+  font-size: 3.1rem
+}
+/* Offset navlinks for aesthetics */
+.nav-list {
+  margin-left: 20px !important;
+}
+/* BTN & BRAND */
+nav ul a, nav .brand-logo  {
+    color: #000;
+    opacity: .33;
+    font-weight: bolder;
+}
+/* BTN & BRAND HOVER/ACTIVE */
+nav ul a:hover, nav ul a.active, nav .brand-logo:hover, nav .brand-logo.active {
+  color: #fff;
+  opacity: 1;
+
+}
+nav ul a:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+/***********
+** FOOTER **
+***********/
+/* Copyright */
+.footer-copyright {
+  color: #000 !important;
+  opacity: .33;
+  font-weight: bold !important;
+}
+footer.page-footer {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/******************
+** LIVE MAP PAGE **
+******************/
+#live-map {
+  position: relative;
+  top:0;
+  bottom:0;
+  width:100%;
+  height: 100vh;
+ }
+
+/***************
+** LOGIN PAGE **
+***************/
+/* Wrapper to align vertically */
+.login-card-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 70vh;
+}
+.card.login-card {
+  margin: 1.5rem 0 1rem 0;
+  padding: .75rem !important;
+}
