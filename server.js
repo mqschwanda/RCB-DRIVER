@@ -30,25 +30,8 @@ server.use(bodyParser.json({type:'application/vnd.api+json'}));
 server.use(express.static(process.cwd() + '/public'));
 
 // ROUTER
-var routes = require('./controllers/router.js');
+var routes = require('./controller/index.js');
 server.use('/', routes);
-
-// MYSQL CONFIGURATION
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'database_development'
-});
-
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  };
-  console.log('\n==== mySQL ====\nCONNECTED TO DB: '+connection.config.database+'\n        ON PORT: '+connection.config.port+'\n        WITH ID: '+connection.threadId);
-});
 
 // LISTENER
 server.listen(PORT, function() {
