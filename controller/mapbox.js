@@ -1,9 +1,10 @@
 // MAPBOX
 var MapboxClient = require('mapbox');
 var client = new MapboxClient('pk.eyJ1IjoibXFzY2h3YW5kYSIsImEiOiJjaXZvY3E2ZTcwMTc3MnpxdnEzdm1nZ25vIn0.DGfq6MDVPOekSDZ795bEDA');
-var geoTag = client.geocodeForward('Chester, NJ', function(err, res) {
-  return res;
-});
+// var geoTag = client.geocodeForward('Chester, NJ', function(err, res) {
+//   return res;
+// });
+// var geoTag = require('./data/geoTag.js');
 
 
 module.exports = function (router) {
