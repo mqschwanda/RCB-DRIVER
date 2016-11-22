@@ -31,4 +31,11 @@ module.exports = function (router) {
     res.json(emailExists);
   });
 
+  router.post('/set/latlong', function (req, res) {
+     // Store information from client form post
+     var latLong = req.body;
+   console.log(latLong);
+ });
+
+
 };

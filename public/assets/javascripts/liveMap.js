@@ -12,6 +12,11 @@ var getGeoTag = function() {
 }
 getGeoTag();
 
+//storage for dynamic longitude and latitude 
+var latlong={
+latitude:0,
+longitude:0
+};
 
 
 
@@ -119,11 +124,23 @@ if (mapConfig.miniMap) {
   marker.bindLabel(player.type, { noHide: mapConfig.labels, opacity: 0.66, direction: 'auto' }).addTo(map);
 
   var direction = 0, manual = false;
-
-  window.setInterval(function() {
+function postcoords () {
     var ll = marker.getLatLng();
     ll.lat += Math.cos(direction) / 100;
     ll.lng += Math.sin(direction) / 100;
+    //pushing coordinates into array
+    latlong.latitude=ll.lat;
+    latlong.longitude=ll.lng;
+     var currentURL = window.location.origin;
+     // post
+     $.post(currentURL + "/set/latlong", latlong, function(err, data){
+      console.log(latlong);
+      if (err) {
+        console.log(err)
+      }
+      console.log(data)
+
+    });
 
     //dynamic latitude and longitude
     map.panTo(marker.getLatLng());
@@ -133,7 +150,12 @@ if (mapConfig.miniMap) {
     if (!manual && Math.random() > 0.95) {
       direction += (Math.random() - 0.5) / 2;
     }
-  }, 10);
+}
+ setInterval(postcoords, 1000);
+
+
+
+
 
   // Add manual control of the icon with left and right arrow keys
   document.body.addEventListener('keydown', function(e) {
