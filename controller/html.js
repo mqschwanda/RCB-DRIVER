@@ -11,16 +11,22 @@ module.exports = function (router) {
   	res.render('home', hbsObject);
   });
 
+  // PLAY
+  router.get('/play', function (req, res) {
+  	var hbsObject = {active: {liveMap: true}};
+  	res.render('liveMap', hbsObject);
+  });
+
   // LIVE MAP
   router.get('/live_map', function (req, res) {
   	var hbsObject = {active: {liveMap: true}};
   	res.render('liveMap', hbsObject);
   });
 
-  // ALERTS
-  router.get('/alerts', function (req, res) {
-  	var hbsObject = {active: {alerts: true}};
-  	res.render('alerts', hbsObject);
+  // CONTROLS
+  router.get('/controls', function (req, res) {
+  	var hbsObject = {active: {controls: true}};
+  	res.render('controls', hbsObject);
   });
 
   // ABOUT
@@ -29,10 +35,10 @@ module.exports = function (router) {
   	res.render('about', hbsObject);
   });
 
-  // LOGIN
-  router.get('/login', function (req, res) {
-  	var hbsObject = {active: {login: true}};
-  	res.render('login', hbsObject);
+  // SETTINGS
+  router.get('/about', function (req, res) {
+    var hbsObject = {active: {settings: true}};
+    res.render('about', hbsObject);
   });
 
 };

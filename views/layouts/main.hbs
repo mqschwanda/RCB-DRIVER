@@ -27,14 +27,14 @@
     <header>
       <nav>
         <div class="nav-wrapper teal lighten-1">
-          <a href="home" class="brand-logo left {{#if active.home}}active{{/if}}">DRIVER</a>
+          <a href="/home" class="brand-logo left {{#if active.home}}active{{/if}}">DRIVER</a>
           <ul class="nav-list left">
-            <li><a id="live-map-btn" class="{{#if active.liveMap}}active{{/if}}" href="live_map">LIVE MAP</a></li>
-            <li><a id="alerts-btn" class="{{#if active.alerts}}active{{/if}}" href="alerts">ALERTS</a></li>
-            <li><a id="about-btn" class="{{#if active.about}}active{{/if}}" href="about">ABOUT</a></li>
+            <li><a id="live-map-btn" class="{{#if active.liveMap}}active{{/if}}" href="/live_map">LIVE MAP</a></li>
+            <li><a id="controls-btn" class="{{#if active.controls}}active{{/if}}" href="/controls">CONTROLS</a></li>
+            <li><a id="about-btn" class="{{#if active.about}}active{{/if}}" href="/about">ABOUT</a></li>
           </ul>
           <ul class="right">
-            <li><a id="login-btn" class="{{#if active.login}}active{{/if}}" href="login"><i class="material-icons left">perm_identity</i>LOGIN</a></li>
+            <li><a id="settings-btn" class="{{#if active.settings}}active{{/if}}" href="/settings"><i class="material-icons left">settings</i>SETTINGS</a></li>
           </ul>
         </div>
       </nav>
@@ -47,16 +47,15 @@
     </footer>
     <script type="text/javascript" src="/assets/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/javascripts/materialize.min.js"></script>
-    <script type="text/javascript" src="/assets/javascripts/main.js"></script>
     {{#if active.liveMap}}
       <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
       <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
       <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.js'></script>
       <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
-      <script type="text/javascript" src="/assets/javascripts/liveMap.js"></script>
     {{/if}}
-    {{#if active.login}}
-      <script type="text/javascript" src="/assets/javascripts/login.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/main.js"></script>
+    {{#if active.home}}
+      <script type="text/javascript" src="/assets/javascripts/home.js"></script>
     {{/if}}
   </body>
 </html>
