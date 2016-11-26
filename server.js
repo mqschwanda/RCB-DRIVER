@@ -1,6 +1,3 @@
-// DEPENDENCIES
-// var path = require('path');
-
 // EXPRESS CONFIGURATION
 var express = require('express');
 var server = express();
