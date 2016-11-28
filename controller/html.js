@@ -36,9 +36,9 @@ module.exports = function (router) {
   });
 
   // SETTINGS
-  router.get('/about', function (req, res) {
+  router.get('/settings', function (req, res) {
     var hbsObject = {active: {settings: true}};
-    res.render('about', hbsObject);
+    res.render('settings', hbsObject);
   });
 
 };
