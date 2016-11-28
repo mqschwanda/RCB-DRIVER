@@ -13,7 +13,9 @@ Fly around on a map and show others flying around on a live map
 
 ## TODO ##
 1. Store ID and Name of user in local browser storage for access latter. (/RCB-MLSD/public/assets/javascripts/home.js [line 18])
-2. Update the code so that the wanderdrone featureLayer is updating instead of adding to map. (/RCB-MLSD/public/assets/javascripts/map.js [line 139])
+
+done 2. Update the code so that the wanderdrone featureLayer is updating instead of adding to map. (/RCB-MLSD/public/assets/javascripts/map.js [line 139])
+
 3. Either send data via the post or update a master api route that will serve data similar to wanderdrone. (/RCB-MLSD/public/assets/javascripts/map.js [line 138])
 4. Insert 'player.name 'into mySQL database and return primary key as id (/RCB-MLSD/controller/map.js [line 8])
 5. Insert 'player' object into mySQL database to update position and direction (/RCB-MLSD/controller/map.js [line 31])
