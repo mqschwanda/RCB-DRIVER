@@ -5,7 +5,11 @@ function User(id, name) {
   this.mapStyle = 'mapbox.light';
   this.miniMap = true;
 }
-var currentUser = new User('00TEST00', 'Test Smith');
+if (typeof(Storage) !== 'undefined') { // Check browser support
+  var currentUserID = localStorage.getItem('driverID');
+  var currentUserName = localStorage.getItem('driverName');
+}
+var currentUser = new User(currentUserID, currentUserName);
 // define the map settings
 function mapSettings(user) {
   this.name = null;

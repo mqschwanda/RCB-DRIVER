@@ -1,74 +1,85 @@
+// SEQUELIZE
+var Player  = require('./../models')['Player'];
+Player.sync({force:true});
+
+
 module.exports = function (router) {
 
 
   router.post('/post/player', function (req, res) {
     // store information from client new username post
     var data = req.body;
-    var playerName = data.name;
-    // insert 'player.name 'into mySQL database and return primary key as id
-    var primaryKey = '0000000000'; // placeholder
-    // store information from client and mySQL insert
-    var userData = {
-      id: primaryKey,
-      name: playerName
-    };
-    // send data back to client so that user information can be stored locally
-    res.json(userData);
+    // insert new player record using data from client
+    Player.create({ name: data.name }).done(function(result) {
+      // store information from client input and mySQL res
+      var userData = {
+        id: result.id, // primaryKey is returned in result
+        name: data.name
+      };
+      // send data back to client so that user information can be stored locally
+      res.json(userData);
+    });
   }); // END: router.post('/post/player')
 
 
   router.post('/post/coordinates', function (req, res) {
     // store information from client coordinate post
     var data = req.body;
-    // create object to hold all data received from client in post
-    var player = {
-      id: data.id,
-      name: data.name,
+    // Update 'player' object with position and direction
+    Player.update({
       latitude: data.latitude,
       longitude: data.longitude,
       direction: data.direction
-    }
-    // Insert 'player' object into mySQL database to update position and direction
+    }, {
+      where: { id: data.id }
+    }).then(function(result) {}, function(rejectedPromiseError) {});
 
     // select all from players table where the current player id does not equal the record's id
-    // 'SELECT * FROM `PLAYERS` WHERE `id` NOT ?'
-    // ? = userID
-
-    // PLACEHOLDER FOR THE FORMATING OF EACH PLAYER RETURNED IN 'mySQL' QUERY
-    // PLACEHOLDER: player object with information and location
-    var testPoint = {
-      id: 'test',
-      name: 'geoJSON test',
-      latitude: -79.00,
-      longitude: 40,
-      direction: null
-    }
     var playerArray = []; // hold each player object
-    playerArray.push(testPoint);
-    var featureArray = []; // will hold features to give geoJSON and later populate mapbox
-    // iterate through an array cotaining every player on the map
-    for (var i = 0; i < playerArray.length; i++) {
-      // create a feature that represents an individual player
-      var feature = {
-        type: 'Feature',
-        geometry: {
-            type: 'Point',
-            coordinates: [playerArray[i].latitude, playerArray[i].longitude]
-        },
-        properties: {
-          title: playerArray[i].name
+    Player.findAll({
+      where: {
+        id: {
+          $ne: data.id
         }
       }
-      // push individual feature to an array of features
-      featureArray.push(feature);
-    }
-    // create geoJSON object that mapbox can read
-    var geoJSON = {
-      type: 'FeatureCollection',
-      features: featureArray
-    };
-    // send the geoJSON object back to client so that all players can be displayed
-    res.json(geoJSON);
+    }).then(function(result) {
+      for (var i = 0; i < result.length; i++) {
+        // point object with player information and location
+        var point = {
+          id: result[i].id,
+          name: result[i].name,
+          latitude: result[i].latitude,
+          longitude: result[i].longitude,
+          direction: result[i].direction
+        }
+        playerArray.push(point);
+      }
+      var featureArray = []; // will hold features to give geoJSON and later populate mapbox
+      // iterate through an array cotaining every player on the map
+      for (var i = 0; i < playerArray.length; i++) {
+        // create a feature that represents an individual player
+        var feature = {
+          type: 'Feature',
+          geometry: {
+              type: 'Point',
+              coordinates: [playerArray[i].longitude, playerArray[i].latitude]
+          },
+          properties: {
+            title: playerArray[i].name
+          }
+        }
+        // push individual feature to an array of features
+        featureArray.push(feature);
+      }
+      // create geoJSON object that mapbox can read
+      var geoJSON = {
+        type: 'FeatureCollection',
+        features: featureArray
+      };
+      // send the geoJSON object back to client so that all players can be displayed
+      res.json(geoJSON);
+    });
+
   }); // END: router.post('/post/coordinates')
 
 

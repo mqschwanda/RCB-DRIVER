@@ -16,6 +16,11 @@ $("#play-btn").on("click", function(){
   var data = { name: userName };
   $.post(currentURL + '/post/player', data, function(res){
     // Store ID and Name of user in local browser storage for access latter.
-    console.log(res); // store this information in a browser
+    if (typeof(Storage) !== 'undefined') { // Check browser support
+      localStorage.setItem('driverID', res.id);
+      localStorage.setItem('driverName', res.name);
+    } else {
+      alert('Please update your browser to play Driver')
+    }
   });
 });
