@@ -6,8 +6,9 @@ function User(id, name) {
   this.miniMap = true;
 }
 if (typeof(Storage) !== 'undefined') { // Check browser support
-  var currentUserID = localStorage.getItem('driverID');
-  var currentUserName = localStorage.getItem('driverName');
+  //console.log(localStorage.driverID);
+  var currentUserID = sessionStorage.driverID;
+  var currentUserName = sessionStorage.driverName;
 }
 var currentUser = new User(currentUserID, currentUserName);
 // define the map settings
@@ -16,7 +17,8 @@ function mapSettings(user) {
   this.mapStyle = user.mapStyle;
   this.miniMap = user.miniMap;
   this.labels = true;
-  this.updateSpeed = 10;
+  this.updateSpeed = 1000;
+  this.keyboard = false;
 }
 var mapConfig = new mapSettings(currentUser);
 // define the user's settings
@@ -44,7 +46,7 @@ function Toon(user) {
   this.turnSpeed = 0.05;
   this.transitionSpeed = null; // in ms
   this.size = 25; // in px
-  this.draggable = false;
+  this.draggable = true;
 }
 var player = new Toon(currentUser);
 
@@ -53,8 +55,9 @@ var player = new Toon(currentUser);
 L.mapbox.accessToken = 'pk.eyJ1Ijoic3V6YWt1MSIsImEiOiJjaXZwZG1qMTMwMWZnMnpwNWZsbmtyOGE0In0.kn43gd2YQghUwl_4pJZ65Q';
 // configure mapbox to display in browser
 var map = L.mapbox.map('live-map', mapConfig.mapStyle, {
-    keyboard: false
-}).setView([37.9, -77],4);
+  keyboard: mapConfig.keyboard,
+  continuousWorld: true
+}).setView([0, 0],1);
 map.scrollWheelZoom.disable(); // remove scrolling function of the map
 L.control.fullscreen().addTo(map); // add full screen button to map
 // add mini map to display
@@ -128,7 +131,18 @@ function updateMap () {
   // update user's marker location relative to its heading (direction)
   var markerLocation = marker.getLatLng(); // store the user's marker location
   markerLocation.lat += Math.cos(direction) / 100;
+  // conditionals to wrap marker when it reaches lat/lng bounds
+  if (markerLocation.lat >= 90) {
+    markerLocation.lat -= 180;
+  } else if (markerLocation.lat <= -90) {
+    markerLocation.lat += 180
+  }
   markerLocation.lng += Math.sin(direction) / 100;
+  if (markerLocation.lng >= 180) {
+    markerLocation.lng -= 360;
+  } else if (markerLocation.lng <= -180) {
+    markerLocation.lng += 360
+  }
   //storage for dynamic longitude, latitude, direction
   data = {
     id: currentUser.id,
@@ -147,7 +161,7 @@ function updateMap () {
   marker.options.angle = direction * (180 / Math.PI);
   marker.setLatLng(markerLocation);
   // adjust map so current user's marker is in the center of the map
-  map.panTo(marker.getLatLng());
+  // map.panTo(marker.getLatLng());
 } // END: function updateMap()
 
 

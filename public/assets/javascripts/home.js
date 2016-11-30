@@ -17,10 +17,10 @@ $("#play-btn").on("click", function(){
   $.post(currentURL + '/post/player', data, function(res){
     // Store ID and Name of user in local browser storage for access latter.
     if (typeof(Storage) !== 'undefined') { // Check browser support
-      localStorage.setItem('driverID', res.id);
-      localStorage.setItem('driverName', res.name);
+      sessionStorage.driverID = res.id;
+      sessionStorage.driverName = res.name;
     } else {
-      alert('Please update your browser to play Driver')
+      alert('Please update your browser to play Driver');
     }
   });
 });
