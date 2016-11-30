@@ -4,41 +4,25 @@ module.exports = function (router) {
   router.get('/', function (req, res) {
   	res.redirect('/home');
   });
-
   // HOME
   router.get('/home', function (req, res) {
   	var hbsObject = {active: {home: true}};
   	res.render('home', hbsObject);
   });
-
   // PLAY
   router.get('/play', function (req, res) {
-  	var hbsObject = {active: {liveMap: true}};
-  	res.render('liveMap', hbsObject);
+  	var hbsObject = {active: {gameMap: true, play: true}};
+  	res.render('gameMap', hbsObject);
   });
-
-  // LIVE MAP
-  router.get('/live_map', function (req, res) {
-  	var hbsObject = {active: {liveMap: true}};
-  	res.render('liveMap', hbsObject);
+  // WATCH
+  router.get('/watch', function (req, res) {
+  	var hbsObject = {active: {gameMap: true, watch: true}};
+  	res.render('gameMap', hbsObject);
   });
-
-  // CONTROLS
-  router.get('/controls', function (req, res) {
-  	var hbsObject = {active: {controls: true}};
-  	res.render('controls', hbsObject);
-  });
-
   // ABOUT
   router.get('/about', function (req, res) {
   	var hbsObject = {active: {about: true}};
   	res.render('about', hbsObject);
-  });
-
-  // SETTINGS
-  router.get('/settings', function (req, res) {
-    var hbsObject = {active: {settings: true}};
-    res.render('settings', hbsObject);
   });
 
 };
