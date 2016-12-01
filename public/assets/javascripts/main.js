@@ -17,8 +17,9 @@ function mapSettings(user) {
   this.mapStyle = user.mapStyle;
   this.miniMap = user.miniMap;
   this.labels = true;
-  this.updateSpeed = 1000;
+  this.updateSpeed = 10;
   this.keyboard = false;
+
 }
 var mapConfig = new mapSettings(currentUser);
 // define the user's settings
@@ -53,11 +54,23 @@ var player = new Toon(currentUser);
 
 // access token
 L.mapbox.accessToken = 'pk.eyJ1Ijoic3V6YWt1MSIsImEiOiJjaXZwZG1qMTMwMWZnMnpwNWZsbmtyOGE0In0.kn43gd2YQghUwl_4pJZ65Q';
+var bounds = [
+    [40.730610, -73.935242], // Southwest coordinates
+    [-40.730610, -73.935242]  // Northeast coordinates
+];
 // configure mapbox to display in browser
 var map = L.mapbox.map('live-map', mapConfig.mapStyle, {
   keyboard: mapConfig.keyboard,
-  continuousWorld: true
-}).setView([0, 0],1);
+  // continuousWorld: true,
+
+  // maxBounds: bounds,
+  center: [40.730610, -73.935242],
+  zoom: 13
+
+});
+map.fitBounds(bounds);
+// }).setView([0, 0],5);
+
 map.scrollWheelZoom.disable(); // remove scrolling function of the map
 L.control.fullscreen().addTo(map); // add full screen button to map
 // add mini map to display
@@ -151,6 +164,8 @@ function updateMap () {
     longitude: markerLocation.lng,
     direction: direction
   };
+
+
   // post current user information to server and collect geoJSON data in the response
   $.post(currentURL + "/post/coordinates", data, function(res) {
     var geoJSON = res; // response from server
