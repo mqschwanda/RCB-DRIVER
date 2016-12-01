@@ -1,7 +1,7 @@
 {
   "name": "sql-transaction",
   "version": "1.0.0",
-  "description": "",
+  "description": "## APP ## Fly around on a map and show others flying around on a live map",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -16,12 +16,16 @@
   },
   "devDependencies": {},
   "scripts": {
-    "scripts": {
-      "dev": "",
-      "start": "",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    }
+    "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mqschwanda/RCB-MLSD.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mqschwanda/RCB-MLSD/issues"
+  },
+  "homepage": "https://github.com/mqschwanda/RCB-MLSD#readme"
 }
