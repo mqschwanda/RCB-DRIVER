@@ -1,7 +1,42 @@
 # RCB-MLSD #
 
-## APP ##
-Fly around on a map and show others flying around on a live map
+### Driver ###
+Players fly around on a map and show others flying around on a live map
+
+## Getting Started ##
+The instructions will guide you through to installing the application on your local machine.
+
+## Prerequisites ##
+Tools needed:
+* Terminal
+* MySQL
+
+### Install ###
+> npm i 
+>
+
+## Built With ##
+
+* body-parser - https://www.npmjs.com/package/body-parser
+* express - https://www.npmjs.com/package/express
+* express-handlebars - https://www.npmjs.com/package/express-handlebars
+* mapbox - https://www.mapbox.com/
+* method-override - https://www.npmjs.com/package/method-override
+* mysql - https://www.mysql.com/
+* path - https://www.npmjs.com/package/path
+* request - https://www.npmjs.com/package/request
+* sequelize - https://www.npmjs.com/package/sequelize
+
+## Authors ##
+
+* Mark Schwanda
+* Stacy Trent
+* Louis Huang
+* Diliyor Yusupov
+
+
+
+
 
 ### USE CASE ###
 #### USER: ####
@@ -21,3 +56,4 @@ Fly around on a map and show others flying around on a live map
 7. Add SEO meta tags to main.hbs
 8. Build up readme file for Presentation
 9. Host on server for presentation
+
