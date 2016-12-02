@@ -54,22 +54,22 @@ var player = new Toon(currentUser);
 
 // access token
 L.mapbox.accessToken = 'pk.eyJ1Ijoic3V6YWt1MSIsImEiOiJjaXZwZG1qMTMwMWZnMnpwNWZsbmtyOGE0In0.kn43gd2YQghUwl_4pJZ65Q';
-var bounds = [
-    [40.730610, -73.935242], // Southwest coordinates
-    [-40.730610, -73.935242]  // Northeast coordinates
-];
+//var bounds lock map screen to designated location to Latitude & Longitude
+// var bounds = [
+//     [40.730610, -73.935242], // Southwest coordinates
+//     [-40.730610, -73.935242]  // Northeast coordinates
+// ];
+
 // configure mapbox to display in browser
 var map = L.mapbox.map('live-map', mapConfig.mapStyle, {
   keyboard: mapConfig.keyboard,
-  // continuousWorld: true,
-
-  // maxBounds: bounds,
+  continuousWorld: true,
+  // maxBounds: bounds, //toggle to lock bounds
   center: [40.730610, -73.935242],
-  zoom: 13
+  zoom: 5
 
-});
-map.fitBounds(bounds);
-// }).setView([0, 0],5);
+}).setView([0, 0],5);
+// map.fitBounds(bounds);
 
 map.scrollWheelZoom.disable(); // remove scrolling function of the map
 L.control.fullscreen().addTo(map); // add full screen button to map
