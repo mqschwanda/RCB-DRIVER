@@ -6,7 +6,7 @@ A simple game where the user flies around the map exploring the world while also
 * Mapbox API
 * Sequelize
 * Express
-* Handlebars
+* Handlebars  
 ### 👥 USE CASES 👥 ###
 * Input username
   1. CLIENT: The user enters a username into the form on the home page. This username does not need to be unique to all users playing the game. *A user can choose to play as a guest by not using the username input*
