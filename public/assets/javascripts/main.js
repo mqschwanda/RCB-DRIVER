@@ -3,14 +3,18 @@ function User(id, name) {
   this.id = id || null;
   this.name = name || null;
   this.mapStyle = 'mapbox.light';
-  this.miniMap = true;
+  this.mapStyle = 'mapbox.outdoors';
+  this.mapStyle = 'mapbox.outdoors';
+  this.miniMap = false;
 }
+var currentUsername, currentUserID;
 if (typeof(Storage) !== 'undefined') { // Check browser support
-  //console.log(localStorage.driverID);
-  var currentUserID = sessionStorage.driverID;
-  var currentUserName = sessionStorage.driverName;
+  console.log('Driver ID: ' + sessionStorage.driverID);
+  console.log('Driver Name: ' + sessionStorage.driverName);
+  currentUserID = sessionStorage.driverID;
+  currentUsername = sessionStorage.driverName;
 }
-var currentUser = new User(currentUserID, currentUserName);
+var currentUser = new User(currentUserID, currentUsername);
 // define the map settings
 function mapSettings(user) {
   this.name = null;
@@ -47,29 +51,22 @@ function Toon(user) {
   this.turnSpeed = 0.05;
   this.transitionSpeed = null; // in ms
   this.size = 25; // in px
-  this.draggable = true;
+  this.draggable = false;
 }
 var player = new Toon(currentUser);
 
 
 // access token
 L.mapbox.accessToken = 'pk.eyJ1Ijoic3V6YWt1MSIsImEiOiJjaXZwZG1qMTMwMWZnMnpwNWZsbmtyOGE0In0.kn43gd2YQghUwl_4pJZ65Q';
-var bounds = [
-    [40.730610, -73.935242], // Southwest coordinates
-    [-40.730610, -73.935242]  // Northeast coordinates
-];
 // configure mapbox to display in browser
 var map = L.mapbox.map('live-map', mapConfig.mapStyle, {
   keyboard: mapConfig.keyboard,
-  // continuousWorld: true,
-
-  // maxBounds: bounds,
-  center: [40.730610, -73.935242],
-  zoom: 13
-
+  worldCopyJump: true,
+  zoom: 2,
+  minZoom: 2,
+  maxBounds: [[-90, -180],[90, 180]],
+  center: [0, 0]
 });
-map.fitBounds(bounds);
-// }).setView([0, 0],5);
 
 map.scrollWheelZoom.disable(); // remove scrolling function of the map
 L.control.fullscreen().addTo(map); // add full screen button to map
@@ -119,38 +116,31 @@ var marker = L.rotatedMarker(new L.LatLng(player.latInit, player.longInit), {
   draggable: player.draggable
 });
 // add label to user's marker with relevent information
-marker.bindLabel(currentUser.name, { noHide: mapConfig.labels, opacity: 0.66, direction: 'auto' }).addTo(map);
-
-
-var direction = 0, manual = false;
+marker.bindLabel(currentUser.name, { noHide: true, opacity: 0.5, direction: 'auto' }).addTo(map);
 // Add manual control of the icon with left and right arrow keys
+var direction = 0;
 document.body.addEventListener('keydown', function(e) {
   if (e.which == 37) {
-    direction -= player.turnSpeed; manual = true;
+    direction -= player.turnSpeed;
   }
   if (e.which == 39) {
-    direction += player.turnSpeed; manual = true;
+    direction += player.turnSpeed;
   }
 }, true);
-// autopilot code
-// if (!manual && Math.random() > 0.95) {
-//   direction += (Math.random() - 0.5) / 2;
-// }
-
 var currentURL = window.location.origin; // used to make post
-var featureLayer = L.mapbox.featureLayer(); // used to update map players
+var featureLayer = L.mapbox.featureLayer().addTo(map); // used to update map players
 // send client marker information to server and update all other players location
 function updateMap () {
   // update user's marker location relative to its heading (direction)
   var markerLocation = marker.getLatLng(); // store the user's marker location
   markerLocation.lat += Math.cos(direction) / 100;
+  markerLocation.lng += Math.sin(direction) / 100;
   // conditionals to wrap marker when it reaches lat/lng bounds
   if (markerLocation.lat >= 90) {
     markerLocation.lat -= 180;
   } else if (markerLocation.lat <= -90) {
     markerLocation.lat += 180
   }
-  markerLocation.lng += Math.sin(direction) / 100;
   if (markerLocation.lng >= 180) {
     markerLocation.lng -= 360;
   } else if (markerLocation.lng <= -180) {
@@ -164,19 +154,23 @@ function updateMap () {
     longitude: markerLocation.lng,
     direction: direction
   };
-
-
   // post current user information to server and collect geoJSON data in the response
-  $.post(currentURL + "/post/coordinates", data, function(res) {
+  $.post(currentURL + "/coordinates", data, function(res) {
     var geoJSON = res; // response from server
+    // console.log(JSON.stringify(geoJSON.features[0].properties.id));
     // add player locations to map with geoJSON object
-    featureLayer.setGeoJSON(geoJSON).addTo(map);
+    for (var i = 0; i < geoJSON.features.length; i++) {
+      if (geoJSON.features[i].properties.id == currentUserID) {
+        delete geoJSON.features[i];
+      }
+    }
+    featureLayer.setGeoJSON(geoJSON);
   });
   // update user's marker direction, latitude, and longitude
   marker.options.angle = direction * (180 / Math.PI);
   marker.setLatLng(markerLocation);
   // adjust map so current user's marker is in the center of the map
-  // map.panTo(marker.getLatLng());
+  map.panTo(marker.getLatLng());
 } // END: function updateMap()
 
 

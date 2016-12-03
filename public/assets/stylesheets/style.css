@@ -9,7 +9,7 @@ html, body {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2') format('woff2');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -126,63 +126,19 @@ footer.page-footer {
 }
 
 
-[class^="svg-marker"] {
+.svg-marker-boeing747, .svg-marker-other  {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
 }
 .svg-marker-boeing747 {
   background-image: url('../images/boeing747.svg');
+  width: 25px;
+  height: 25px;
 }
-.svg-marker-airplane2 {
-  background-image: url('../images/airplane2.svg');
-}
-.svg-marker-airplane3 {
-  background-image: url('../images/airplane3.svg');
-}
-.svg-marker-airplane4 {
-  background-image: url('../images/airplane4.svg');
-}
-.svg-marker-airplane5 {
+.svg-marker-other-user {
   background-image: url('../images/airplane5.svg');
+  height: 20px;
+  width: 20px;
 }
-.svg-marker-airplane6 {
-  background-image: url('../images/airplane6.svg');
-}
-.svg-marker-airplane7 {
-  background-image: url('../images/airplane7.svg');
-}
-.svg-marker-airplane8 {
-  background-image: url('../images/airplane8.svg');
-}
-.svg-marker-prop-plane {
-  background-image: url('../images/prop-plane.svg');
-}
-.svg-marker-helicopter1 {
-  background-image: url('../images/helicopter1.svg');
-}
-.svg-marker-helicopter2 {
-  background-image: url('../images/helicopter2.svg');
-}
-.svg-marker-helicopter3 {
-  background-image: url('../images/helicopter3.svg');
-}
-.svg-marker-helicopter4 {
-  background-image: url('../images/helicopter4.svg');
-}
-.svg-marker-fighter-jet {
-  background-image: url('../images/fighter-jet.svg');
-}
-.svg-marker-space-shuttle {
-  background-image: url('../images/space-shuttle.svg');
-}
-.svg-marker-rocket-ship {
-  background-image: url('../images/rocket-ship.svg');
-}
-
-/*.svg-marker-boat {
-  background-image: url('../images/boat.svg');
-}
-.svg-marker-car {
-  background-image: url('../images/car.svg');
-}*/
