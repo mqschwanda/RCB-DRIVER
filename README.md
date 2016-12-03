@@ -4,7 +4,7 @@ A simple game where the user flies around the map exploring the world while also
 <br/>
 ### 👥 USE CASES 👥 ###
 * Input username
-  1. CLIENT: The user enters A username into the form on the home page. This username does not need to be unique to all users playing the game. *A user can choose to play as a guest by not using the username input*
+  1. CLIENT: The user enters a username into the form on the home page. This username does not need to be unique to all users playing the game. *A user can choose to play as a guest by not using the username input*
   2. CLIENT: When the user submits the form (by pressing the play button) the input is sent to the server.
   3. SERVER: The server receives the username and inserts it into a user table in the database. When this record is created a unique id is automatically generated so that the record can be identified.
 * Fly around map
