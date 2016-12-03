@@ -15,6 +15,7 @@ A simple game where the user flies around the map exploring the world while also
   5. SERVER: The username, coordinates, and bearing of all users is selected from the database and sent to the client.
   6. CLIENT: The client takes the information received from the server and removes the information relating to the user before rendering the information as markers on the map. *This logic is handled client side to alleviate processing on the server*  
 ***************  
+
 ### 💽 DATABASE STRUCTURE 💽 ###  
   * #### User ####
     * ##### Id #####
