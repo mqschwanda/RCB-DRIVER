@@ -90,7 +90,7 @@ A simple game where the user flies around the map exploring the world while also
 
 *************
 
-## Authors ##
+## 📝 Authors 📝 ##
 
 * Mark Schwanda
 * Stacy Trent
