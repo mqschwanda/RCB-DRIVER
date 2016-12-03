@@ -2,7 +2,7 @@
 # 🕹 APP 🕹 #
 A simple game where the user flies around the map exploring the world while also being able to observe in real time the location of all other current users.
 <br/>
-### TECHNOLOGIES ###
+### 📡 TECHNOLOGIES 📡 ###
 * Mapbox API
 * Sequelize
 * Express
