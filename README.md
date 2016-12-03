@@ -8,10 +8,16 @@ A simple game where the user flies around the map exploring the world while also
 <br/>
 **************************
 ### 📡 TECHNOLOGIES 📡 ###
-* Mapbox API
-* Sequelize
-* Express
-* Handlebars   
+* Mapbox API - https://www.mapbox.com/
+* body-parser - https://www.npmjs.com/package/body-parser
+* express - https://www.npmjs.com/package/express
+* express-handlebars - https://www.npmjs.com/package/express-handlebars
+* mapbox - https://www.mapbox.com/
+* method-override - https://www.npmjs.com/package/method-override
+* mysql - https://www.mysql.com/
+* path - https://www.npmjs.com/package/path
+* request - https://www.npmjs.com/package/request
+* sequelize - https://www.npmjs.com/package/sequelize  
 
 **************************
 ### 👥 USE CASES 👥 ###
