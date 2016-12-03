@@ -47,13 +47,13 @@ A simple game where the user flies around the map exploring the world while also
       * variable length character string
       * not null
     * **Longitude**
-      * automatically generated from client longitude
+      * generated from client longitude
       * decimal
     * **Latitude**
-      * automatically generated from client latitude
+      * generated from client latitude
       * decimal
     * **Direction**
-      * automatically generated from client direction
+      * generated from client direction
       * decimal
 
 *************
