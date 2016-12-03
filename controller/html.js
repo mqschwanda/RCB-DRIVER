@@ -19,10 +19,5 @@ module.exports = function (router) {
   	var hbsObject = {active: {gameMap: true, watch: true}};
   	res.render('gameMap', hbsObject);
   });
-  // ABOUT
-  router.get('/about', function (req, res) {
-  	var hbsObject = {active: {about: true}};
-  	res.render('about', hbsObject);
-  });
 
 };

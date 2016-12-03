@@ -6,19 +6,20 @@ var currentURL = window.location.origin;
 
 $("#play-btn").on("click", function(){
   // grab username from input field
-  var userName = $('#userName-input').val().trim();
-  if (userName == "") { // establish guest user if input is empty
-    userName = 'GUEST'
+  var username = $('#username-input').val().trim();
+  if (username == "") { // establish guest user if input is empty
+    username = 'GUEST'
   } else { // make username uppercase
-    userName = userName.toUpperCase();
+    username = username.toUpperCase();
   }
   // create player in database and return user id
-  var data = { name: userName };
-  $.post(currentURL + '/post/player', data, function(res){
+  var data = { name: username };
+  $.post(currentURL + '/user', data, function(res) {
     // Store ID and Name of user in local browser storage for access latter.
     if (typeof(Storage) !== 'undefined') { // Check browser support
       sessionStorage.driverID = res.id;
       sessionStorage.driverName = res.name;
+      window.location.replace(currentURL + '/play');
     } else {
       alert('Please update your browser to play Driver');
     }
