@@ -18,23 +18,23 @@ A simple game where the user flies around the map exploring the world while also
 ***************  
 
 ### 💽 DATABASE STRUCTURE 💽 ###
-  * #### User ####
-    * ##### Id #####
+  * ** User **
+    * ** Id **
       * primary key
       * automatically generated
       * integer
       * not null
-    * ##### Name #####
+    * **Name**
       * username submited by client form
       * variable length character string
       * not null
-    * ##### Longitude #####
+    * **Longitude**
       * automatically generated from client longitude
       * decimal
-    * ##### Latitude #####
+    * **Latitude**
       * automatically generated from client latitude
       * decimal
-    * ##### Direction #####
+    * **Direction**
       * automatically generated from client direction
       * decimal
 
