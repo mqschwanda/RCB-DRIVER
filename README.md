@@ -63,8 +63,7 @@ A simple game where the user flies around the map exploring the world while also
 `}`  
 `featureLayer.setGeoJSON(geoJSON);`
 * Interfacing with the Mapbox API
-  * Adding depreciated features that are no longer supported
-  *
+  * Adding depreciated features that are no longer supported by altering API javascript files
 * Asynchronicity disrupting the flow of data between server and client
   * Nested functions with callbacks on the front-end
   * Used sequelize promises to control async flow
