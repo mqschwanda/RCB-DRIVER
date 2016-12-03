@@ -2,6 +2,11 @@
 # 🕹 APP 🕹 #
 A simple game where the user flies around the map exploring the world while also being able to observe in real time the location of all other current users.
 <br/>
+### TECHNOLOGIES ###
+* Mapbox API
+* Sequelize
+* Express
+* Handlebars
 ### 👥 USE CASES 👥 ###
 * Input username
   1. CLIENT: The user enters a username into the form on the home page. This username does not need to be unique to all users playing the game. *A user can choose to play as a guest by not using the username input*
