@@ -87,3 +87,11 @@ A simple game where the user flies around the map exploring the world while also
 * Encrypt the connection between the server and client so that the user cannot alter the front-end javascript to move other players objects.
 * Add a settings page so that the experience can be customized by the user.
 * Add more features so that users can interact with each other in realtime as they drive around the map.
+
+*************
+
+## Authors ##
+
+* Mark Schwanda
+* Stacy Trent
+* Louis Huang
