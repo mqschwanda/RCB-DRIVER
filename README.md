@@ -2,9 +2,9 @@
 # 🕹 APP 🕹 #
 A simple game where the user flies around the map exploring the world while also being able to observe in real time the location of all other current users.
 <br/>
-![alt tag](https://desolate-lake-59002.herokuapp.com/assets/images/ss1.png)
+![home page](https://raw.githubusercontent.com/mqschwanda/RCB-DRIVER/master/public/assets/images/ss1.png)
 <br/>
-![alt tag](https://desolate-lake-59002.herokuapp.com/assets/images/ss2.png)
+![game page](https://raw.githubusercontent.com/mqschwanda/RCB-DRIVER/master/public/assets/images/ss2.png)
 <br/>
 **************************
 ### 📡 TECHNOLOGIES 📡 ###
