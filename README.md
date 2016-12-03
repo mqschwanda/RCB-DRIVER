@@ -13,9 +13,9 @@ A simple game where the user flies around the map exploring the world while also
   3. CLIENT: As the airplane object is moving around the map the coordinates and bearing are sent to the server.
   4. SERVER: The server receives the coordinates and bearing of the user’s plane object and inserts them into the user table. This process is updating the previous record that was created when establishing a username.
   5. SERVER: The username, coordinates, and bearing of all users is selected from the database and sent to the client.
-  6. CLIENT: The client takes the information received from the server and removes the information relating to the user before rendering the information as markers on the map. *This logic is handled client side to alleviate processing on the server*
+  6. CLIENT: The client takes the information received from the server and removes the information relating to the user before rendering the information as markers on the map. *This logic is handled client side to alleviate processing on the server*  
 ***************
-  ### 💽 DATABASE STRUCTURE 💽 ###
+  ### 💽 DATABASE STRUCTURE 💽 ###  
   * #### User ####
     * ##### Id #####
       * primary key
